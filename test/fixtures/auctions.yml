@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  closing_date: 2012-11-15 14:04:03
+  reserve: 1
+  phto_id: 1
+
+two:
+  name: MyString
+  closing_date: 2012-11-15 14:04:03
+  reserve: 1
+  phto_id: 1
