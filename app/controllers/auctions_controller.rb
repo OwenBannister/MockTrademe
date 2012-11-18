@@ -6,7 +6,7 @@ class AuctionsController < ApplicationController
 
 
 def show
-  @allauctions = Auction.all
+  @auction = Auction.find(params[:id])
 	end
 
 
@@ -19,7 +19,7 @@ def create
     @auction.price = 0
     if @auction.save
     	@allauctions = Auction.all
-      render 'show'
+     redirect_to auction_path
 # Handle a successful save.
     else
       render 'new'
@@ -29,7 +29,7 @@ end
 	def destroy 
     @auction = Auction.find(params[:id])
     @auction.destroy
-		redirect_to auctions_url
+		redirect_to auction_path
 	end
 
 

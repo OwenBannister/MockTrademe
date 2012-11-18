@@ -1,22 +1,43 @@
 
 
+
+
+<% if params["message"] != nil and params["message"] == "Successfull Bid" then %>
+	<div class="label label-success">
+		<br />
+		<%="#{params["message"]}" %>
+		<br /><br />
+
+	</div>
+<% end%>
+<% else if params["message"] != nil and params["message"] == "Unsuccessfull Bid" then %>
+	<div class="label label-important">
+	<br />
+	<%="#{params["message"]}: #{params["message_description"]}" %>
+	<br /><br /> 
+
+	</div>
+<% end%>
+
+<div>
 	<% @allauctions.each do |auction| %>
-	<div class="span3 well">
-		<%= auction.name %><br />
-			<%= "Reserve: $#{auction.reserve} Current Price: $#{auction.price}"%>
-			<br />
-				<%="ID: #{auction.id} "%>
+		<div class="span3 well">
+			<%= auction.name %><br />
+			<% link_to "Auction", auction %> hi 
+			<%= button_to("delete", auction_url(auction.id), method: "delete") %>
+				<%= "Reserve: $#{auction.reserve} Current Price: $#{auction.price}"%>
 				<br />
+					<%="ID: #{auction.id} "%>
+					<br />
+			<%= form_for [auction, auction.bids.build] do |f| %>
+			  <%= f.label :amount %>
+			  <%= f.text_field :amount %><br />
+			  <%= f.submit %>
+			<% end %>
 
-<%= form_for [auction, auction.bids.build] do |f| %>
-  <%= f.label :amount %>
-  <%= f.text_field :amount %><br />
-  <%= f.submit %>
-<% end %>
-
-<% auction.bids.each do |bid| %>
-	<%= "User: #{bid.user_id} Amount: #{bid.amount}" %><br />
-	  	<% end %>
-			</div>
-  	<% end %>
-</form>
+			<% auction.bids.each do |bid| %>
+				<%= "User: #{bid.user_id} Amount: #{bid.amount}" %><br />
+			<% end %>
+		</div>
+	<%end%>
+</div>

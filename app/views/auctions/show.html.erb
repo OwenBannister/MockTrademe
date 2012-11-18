@@ -1,16 +1,1 @@
-
-<%= button_to("delete", auction_url(1), method: "delete") %>
-
-	<% @allauctions.each do |var| %>
-	<div class="span3 well">
-		<%= var.name %><br />
-			<%= "Reserve: $#{var.reserve} Current Price: $#{var.price}"%>
-			<br />
-				<%="ID: #{var.id} "%>
-				<br />
-
-				<br />
-				<br />
-			</div>
-  	<% end %>
-</form>
+<h1>@auction.name </h1>
