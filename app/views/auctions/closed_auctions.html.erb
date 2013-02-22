@@ -1,0 +1,37 @@
+
+<div class="hero-unit">
+	<h2>
+Closed Auctions
+</h2>
+</div>
+	<% @allauctions.each do |auction| %>
+		<div class="span3 well">
+			<h3><%= button_to("delete", auction_url(auction.id), method: "delete") %><%= auction.name %></h3>
+			<span class="label label-success"><%= auction.state%></span>
+
+			
+			<br />
+				<%= "Reserve: $#{auction.reserve} Current Price: $#{auction.price}"%>
+				<%= "Buynow: $#{auction.buynow}"%>
+				<br />
+					<%="ID: #{auction.id} "%>
+					<br />
+		
+			<% auction.bids.reverse.each do |bid| %>
+			<%if bid.id != nil then %>
+				<%= "User: #{bid.user_id} Amount: #{bid.amount} " %>
+					<% if bid.state == "losing_bid" then%>
+						<span class="label label-important">
+						<%= bid.state %>
+						</span>
+					<% else %>
+						<span class="label label-success">
+						<%= bid.state %>
+						</span>
+					<% end %>
+				<br />	
+			<% end %>
+				<% end %>
+		</div>
+
+	<%end%>
