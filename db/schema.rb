@@ -11,16 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116011912) do
+ActiveRecord::Schema.define(:version => 20121120025246) do
 
   create_table "auctions", :force => true do |t|
     t.string   "name"
     t.datetime "closing_date"
     t.integer  "reserve"
     t.integer  "phto_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "price"
+    t.integer  "buynow"
+    t.string   "state"
+    t.string   "current_state"
+    t.string   "image"
+    t.integer  "category_id"
+    t.string   "category"
   end
 
   create_table "bids", :force => true do |t|
@@ -28,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20121116011912) do
     t.integer  "user_id"
     t.datetime "bid_time"
     t.integer  "auction_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.boolean  "leading_bid"
+    t.boolean  "auction_closed"
+    t.string   "state"
+    t.datetime "opened_date"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,12 +1,12 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "sample app", root_path, id: "logo" %>
       <nav>
-        <ul class="nav pull-left">
+        <ul class="nav">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Auctions", auctions_path %>
-
+            <li><%= link_to "New Auction", new_auction_path %>
+            <li><%= link_to "Completed Auctions", closed_path %>
           </li>
         </ul>
       </nav>

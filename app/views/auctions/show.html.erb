@@ -1,1 +1,17 @@
-<h1>@auction.name </h1>
+<div class="hero-unit">
+
+	<h1><%= @auction.name %> </h1>
+</div>
+<div> 
+<h4><%= "Reserve: #{@auction.reserve} "%></h4>
+<h4><%= "Current Price: #{@auction.price} " %></h4>
+<h4><%= "Buynow: #{@auction.buynow} " %></h4>
+<br />
+
+<h3>Bids</h3>
+<hr />
+	<% @auction.bids.each do |bid| %>
+				<h4><%= "User: #{bid.user_id} Amount: #{bid.amount}" %><br /></h4>
+			<% end %>
+
+</div>

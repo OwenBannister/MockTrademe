@@ -5,9 +5,26 @@
     <%= form_for(@auction) do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name %>
+              <br />
+
+              <%= f.label :category_id %>
+         <%= f.collection_select :category, Category.all, :to_s, :name.to_s,:include_blank => true %>
+        <%= f.text_field :category %>
         <br />
         <%= f.label :reserve %>
         <%= f.text_field :reserve %>
+            <br />
+        <%= f.label :buynow %>
+        <%= f.text_field :buynow %>
+
+
+
+<%= image_tag(@auction.image_url) if @auction.image.present? %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+
+        
         <%= f.submit "Create Auction", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

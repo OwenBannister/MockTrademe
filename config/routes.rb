@@ -7,7 +7,7 @@ end
    root to: 'static_pages#home'
 
   match '/signup', to: 'users#new'
-
+ match '/closed', to: 'auctions#closed_auctions'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
